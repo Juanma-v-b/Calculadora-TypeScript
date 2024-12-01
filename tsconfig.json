@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+      "target": "es5",                // O puedes cambiarlo a es6, es2015, etc.
+      "lib": ["es2016", "dom"],       // Asegúrate de incluir "es2016" o una versión posterior
+      "strict": true,
+      "esModuleInterop": true,
+      "outDir": "./dist"
+    }
+  }
+  

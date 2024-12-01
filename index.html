@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Calculadora</title>
+</head>
+<body>
+  <div class="container d-flex justify-content-center">
+    <div class="container-calculadora bg-dark mt-5 p-5 position-relative">
+      <div class="row">
+        <div class="col w-100">
+          <input class="border-0 no-select text-end" type="text" name="historial" id="historial" />
+        </div>
+      </div>
+      <div class="row mb-4">
+        <div class="col">
+          <input class="border-0 no-select text-end" type="text" name="result" id="result" placeholder="0" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col p-1"></div>
+        <div class="col p-1"></div>
+        <div class="col p-1"></div>
+        <div class="col p-1 cont-borrar d-flex justify-content-end">
+          <button class="border-0 w-100 btn-lg" onclick="borrar()">
+            AC
+          </button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col p-1">
+          <button class="bg-light border-0 w-100 btn-lg" onclick="enviarNumero('7')">7</button>
+        </div>
+        <div class="col p-1">
+          <button class="bg-light border-0 w-100 btn-lg" onclick="enviarNumero('8')">8</button>
+        </div>
+        <div class="col p-1">
+          <button class="bg-light border-0 w-100 btn-lg" onclick="enviarNumero('9')">9</button>
+        </div>
+        <div class="col p-1">
+          <button class="operador bg-warning border-0 w-100 btn-lg" onclick="operar('/')">/</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col p-1">
+          <button class="bg-light border-0 w-100 btn-lg" onclick="enviarNumero('4')">4</button>
+        </div>
+        <div class="col p-1">
+          <button class="bg-light border-0 w-100 btn-lg" onclick="enviarNumero('5')">5</button>
+        </div>
+        <div class="col p-1">
+          <button class="bg-light border-0 w-100 btn-lg" onclick="enviarNumero('6')">6</button>
+        </div>
+        <div class="col p-1">
+          <button class="operador bg-warning border-0 w-100 btn-lg" onclick="operar('*')">*</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col p-1">
+          <button class="bg-light border-0 w-100 btn-lg" onclick="enviarNumero('1')">1</button>
+        </div>
+        <div class="col p-1">
+          <button class="bg-light border-0 w-100 btn-lg" onclick="enviarNumero('2')">2</button>
+        </div>
+        <div class="col p-1">
+          <button class="bg-light border-0 w-100 btn-lg" onclick="enviarNumero('3')">3</button>
+        </div>
+        <div class="col p-1">
+          <button class="operador bg-warning border-0 w-100 btn-lg" onclick="operar('-')">-</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col p-1">
+          <button class="bg-light border-0 w-100 btn-lg" onclick="enviarNumero('0')">0</button>
+        </div>
+        <div class="col p-1">
+          <button class="operador bg-light border-0 w-100 btn-lg" onclick="enviarNumero('.')">.</button>
+        </div>
+        <div class="col p-1">
+          <button class="igual border-0 w-100 btn-lg" onclick="resolver()">=</button>
+        </div>
+        <div class="col p-1">
+          <button class="operador bg-warning border-0 w-100 btn-lg" onclick="operar('+')">+</button>
+        </div>
+      </div>
+
+      <!-- Científica -->
+      <div class="row btn-cientifica bnt-lg my-3">
+        <button class="border-0 w-100 btn-lg py-3 text-dark">
+          Científica
+        </button>
+      </div>
+
+      <div class="cont-cientifica">
+        <div class="row">
+          <div class="col p-1">
+            <button class="operador bg-warning border-0 w-100 btn-lg" onclick="operar('raiz')">√</button>
+          </div>
+          <div class="col p-1">
+            <button class="operador bg-warning border-0 w-100 btn-lg" onclick="operar('potencia')">x²</button>
+          </div>
+          <div class="col p-1">
+            <button class="operador bg-warning border-0 w-100 btn-lg" onclick="operar('tangente')">tan</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col p-1">
+            <button class="operador bg-warning border-0 w-100 btn-lg" onclick="operar('coseno')">cos</button>
+          </div>
+          <div class="col p-1">
+            <button class="operador bg-warning border-0 w-100 btn-lg" onclick="operar('pi')">π</button>
+          </div>
+          <div class="col p-1">
+            <button class="operador bg-warning border-0 w-100 btn-lg" onclick="operar('euler')">e</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controlar Historial -->
+      <div class="row btn-historial bnt-lg my-3">
+        <h4>Historial</h4>
+        <div class="col">
+          <button class="mostrar border-0 w-100 btn-lg py-3" onclick="mostrarHistorial()">Mostrar</button>
+        </div>
+        <div class="col">
+          <button class="borrar border-0 w-100 btn-lg py-3" onclick="borrarHistorial()">Borrar</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="container-historial bg-dark mt-5 p-4 fit-content">
+      <h3 class="text-warning">Historial</h3>
+      <div class="operaciones w-100 h-75 bg-light p-2"></div>
+    </div>
+  </div>
+
+  <script src="dist/app.js"></script>
+</body>
+</html>
